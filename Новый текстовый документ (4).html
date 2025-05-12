@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Как начать создавать сайты</title>
+    <style>
+      /* Предыдущие стили остаются без изменений */
+
+      /* Новые стили для диаграммы */
+      .chart-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .chart-title {
+        text-align: center;
+        color: #6e8efb;
+        margin-bottom: 1rem;
+      }
+    </style>
+    <!-- Подключаем библиотеку Chart.js для диаграмм -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Как начать создавать сайты</title>
+    <style>
+      /* Общие стили */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Шапка сайта */
+      header {
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      /* Навигация */
+      nav {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: #f0f0f0;
+        color: #6e8efb;
+      }
+
+      /* Основное содержимое */
+      .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+
+      section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #6e8efb;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: #a777e3;
+        margin: 1.5rem 0 0.8rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      ul,
+      ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Блоки кода */
+      pre {
+        background-color: #f8f8f8;
+        border-left: 4px solid #6e8efb;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+        border-radius: 0 4px 4px 0;
+      }
+
+      code {
+        font-family: 'Courier New', Courier, monospace;
+        color: #333;
+      }
+
+      /* Кнопки */
+      .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Подвал */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+      }
+
+      .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Декоративные элементы */
+      .decorative {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(110, 142, 251, 0.1);
+        z-index: -1;
+      }
+
+      .decorative-1 {
+        top: 20%;
+        left: 5%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .decorative-2 {
+        bottom: 10%;
+        right: 5%;
+        animation: float 8s ease-in-out infinite;
+        background: rgba(167, 119, 227, 0.1);
+      }
+
+      .decorative-3 {
+        top: 50%;
+        right: 15%;
+        width: 150px;
+        height: 150px;
+        animation: float 7s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav a {
+          margin-bottom: 0.5rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .decorative {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Декоративные элементы -->
+    <div class="decorative decorative-1"></div>
+    <div class="decorative decorative-2"></div>
+    <div class="decorative decorative-3"></div>
+
+    <!-- Шапка сайта -->
+    <header>
+      <div class="header-content">
+        <h1>Как начать создавать сайты</h1>
+        <p class="subtitle">
+          Полное руководство для начинающих веб-разработчиков
+        </p>
+      </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav>
+      <div class="nav-container">
+        <a href="#basics">Основы</a>
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#first-site">Первый сайт</a>
+        <a href="#resources">Ресурсы</a>
+      </div>
+    </nav>
+
+    <!-- Основное содержимое -->
+    <div class="container">
+      <section id="basics">
+        <h2>Основы веб-разработки</h2>
+        <p>
+          Создание сайтов - это увлекательный и творческий процесс, который
+          начинается с понимания основных технологий.
+        </p>
+
+        <h3>Что нужно знать в начале?</h3>
+        <ul>
+          <li><strong>HTML</strong> - структура и содержимое сайта</li>
+          <li><strong>CSS</strong> - оформление и стилизация</li>
+          <li>
+            <strong>JavaScript</strong> - интерактивность (изучается после
+            основ)
+          </li>
+          <li>
+            <strong>Редактор кода</strong> - инструмент для написания кода
+          </li>
+          <li><strong>Браузер</strong> - для тестирования результатов</li>
+        </ul>
+
+        <h3>Как работает веб-сайт?</h3>
+        <p>
+          Когда вы вводите адрес сайта в браузере, сервер отправляет HTML, CSS и
+          JavaScript файлы вашему браузеру, который интерпретирует этот код и
+          отображает страницу.
+        </p>
+      </section>
+
+      <section id="html">
+        <h2>Основы HTML</h2>
+        <p>
+          HTML (HyperText Markup Language) - это стандартный язык разметки для
+          создания веб-страниц.
+        </p>
+
+        <h3>Структура HTML-документа</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Мой первый сайт&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это мой первый сайт.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Основные HTML-теги</h3>
+        <ul>
+          <li><code>&lt;h1&gt;-&lt;h6&gt;</code> - заголовки</li>
+          <li><code>&lt;p&gt;</code> - абзац текста</li>
+          <li><code>&lt;a href="..."&gt;</code> - ссылка</li>
+          <li><code>&lt;img src="..."&gt;</code> - изображение</li>
+          <li><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code> - списки</li>
+          <li><code>&lt;div&gt;</code> - блок</li>
+          <li><code>&lt;span&gt;</code> - строчный элемент</li>
+        </ul>
+
+        <a href="https://htmlreference.io/" class="btn" target="_blank"
+          >Справочник HTML</a
+        >
+      </section>
+
+      <section id="css">
+        <h2>Основы CSS</h2>
+        <p>
+          CSS (Cascading Style Sheets) - это язык стилей, который определяет
+          внешний вид HTML-документа.
+        </p>
+
+        <h3>Как подключить CSS?</h3>
+        <p>CSS можно подключить тремя способами:</p>
+        <ol>
+          <li>Встроенные стили (атрибут style)</li>
+          <li>Внутренние стили (тег &lt;style&gt; в head)</li>
+          <li>Внешние стили (отдельный .css файл)</li>
+        </ol>
+
+        <h3>Пример CSS</h3>
+        <pre><code>/* Изменяем цвет всех заголовков h1 */
+h1 {
+    color: blue;
+    font-size: 24px;
+}
+
+/* Стили для класса .button */
+.button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Стили для элемента с id="header" */
+#header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}</code></pre>
+
+        <h3>Основные CSS-свойства</h3>
+        <ul>
+          <li><code>color</code> - цвет текста</li>
+          <li><code>background-color</code> - цвет фона</li>
+          <li><code>font-size</code> - размер шрифта</li>
+          <li><code>margin</code> - внешние отступы</li>
+          <li><code>padding</code> - внутренние отступы</li>
+          <li><code>border</code> - граница</li>
+          <li><code>display</code> - тип отображения</li>
+        </ul>
+
+        <a href="https://cssreference.io/" class="btn" target="_blank"
+          >Справочник CSS</a
+        >
+      </section>
+
+      <section id="first-site">
+        <h2>Создаем первый сайт</h2>
+        <p>Давайте создадим простую веб-страницу шаг за шагом.</p>
+
+        <h3>Шаг 1: Создаем файлы</h3>
+        <p>Создайте папку для проекта и в ней два файла:</p>
+        <ul>
+          <li><code>index.html</code> - главная страница</li>
+          <li><code>style.css</code> - файл стилей</li>
+        </ul>
+
+        <h3>Шаг 2: Пишем HTML</h3>
+        <p>Откройте <code>index.html</code> и добавьте базовую структуру:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Мой первый сайт&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Добро пожаловать!&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;p&gt;Это мой первый сайт. Я только учусь веб-разработке.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;© 2023 Мой первый сайт&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Шаг 3: Добавляем CSS</h3>
+        <p>Откройте <code>style.css</code> и добавьте стили:</p>
+        <pre><code>body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}</code></pre>
+
+        <h3>Шаг 4: Открываем в браузере</h3>
+        <p>
+          Дважды кликните на файл <code>index.html</code>, чтобы открыть его в
+          браузере. Поздравляю, ваш первый сайт готов!
+        </p>
+
+        <a href="#" class="btn">Попробовать онлайн-редактор</a>
+      </section>
+
+      <section id="resources">
+        <h2>Полезные ресурсы</h2>
+        <p>Вот несколько отличных ресурсов для продолжения обучения:</p>
+
+        <h3>Для изучения</h3>
+        <ul>
+          <li>
+            <a href="https://htmlacademy.ru/" target="_blank">HTML Academy</a> -
+            интерактивные курсы
+          </li>
+          <li>
+            <a href="https://learn.javascript.ru/" target="_blank"
+              >Learn JavaScript</a
+            >
+            - учебник по JavaScript
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/ru/" target="_blank"
+              >MDN Web Docs</a
+            >
+            - документация
+          </li>
+          <li>
+            <a href="https://www.freecodecamp.org/learn" target="_blank"
+              >freeCodeCamp</a
+            >
+            - бесплатные курсы (на английском)
+          </li>
+        </ul>
+
+        <h3>Инструменты</h3>
+        <ul>
+          <li>
+            <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
+            - редактор кода
+          </li>
+          <li>
+            <a href="https://codepen.io/" target="_blank">CodePen</a> -
+            онлайн-редактор
+          </li>
+          <li>
+            <a href="https://github.com/" target="_blank">GitHub</a> - хостинг
+            для проектов
+          </li>
+          <li>
+            <a href="https://figma.com/" target="_blank">Figma</a> -
+            дизайн-инструмент
+          </li>
+        </ul>
+
+        <h3>Практика</h3>
+        <p>Лучший способ научиться - практиковаться! Попробуйте:</p>
+        <ol>
+          <li>Создать страницу-визитку о себе</li>
+          <li>Сделать галерею фотографий</li>
+          <li>Сверстать меню ресторана</li>
+          <li>Клонировать главную страницу Google</li>
+        </ol>
+      </section>
+    </div>
+    <!-- Подвал -->
+    <footer>
+      <div class="footer-content">
+         <!-- Предыдущий код остается без изменений до секции с диаграммой -->
+    
+    <div class="container">
+    <!-- Предыдущие секции остаются без изменений -->
+    
+    <section id="stats">
+        <h2>Статистика по технологиям</h2>
+        <p>Вот как распределяется популярность среди технологий веб-разработки среди начинающих:</p>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Популярность технологий (2023)</h3>
+            <canvas id="techChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3 class="chart-title">Сложность изучения</h3>
+            <canvas id="difficultyChart"></canvas>
+        </div>
+        
+        <p>Эта статистика поможет вам понять, какие технологии стоит изучать в первую очередь и на что обратить особое внимание.</p>
+    </section>
+    
+    <!-- Остальные секции остаются без изменений -->
+</div>
+
+<!-- Предыдущий код подвала остается без изменений -->
+
+<script>
+    // Скрипт для создания диаграмм после загрузки страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        // Первая диаграмма - популярность технологий
+        const techCtx = document.getElementById('techChart').getContext('2d');
+        const techChart = new Chart(techCtx, {
+            type: 'bar',
+            data: {
+                labels: ['HTML', 'CSS', 'JavaScript', 'React', 'Vue.js', 'Node.js'],
+                datasets: [{
+                    label: 'Процент использования',
+                    data: [98, 95, 85, 65, 30, 40],
+                    backgroundColor: [
+                        'rgba(110, 142, 251, 0.7)',
+                        'rgba(167, 119, 227, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(255, 159, 64, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(110, 142, 251, 1)',
+                        'rgba(167, 119, 227, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Процент использования (%)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Вторая диаграмма - сложность изучения
+        const difficultyCtx = document.getElementById('difficultyChart').getContext('2d');
+        const difficultyChart = new Chart(difficultyCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['HTML', 'CSS', 'JavaScript', 'Фреймворки'],
+                datasets: [{
+                    label: 'Сложность изучения',
+                    data: [10, 30, 70, 85],
+                    backgroundColor: [
+                        'rgba(110, 142, 251, 0.7)',
+                        'rgba(167, 119, 227, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(110, 142, 251, 1)',
+                        'rgba(167, 119, 227, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '/100';
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Сложность изучения (по шкале от 1 до 100)',
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    });
+</script>
+        <p>© 2023 Руководство по созданию сайтов для начинающих</p>
+        <p>Создано с ❤️ для будущих веб-разработчиков</p>
+      </div>
+    </footer>
+  </body>
+</html>
